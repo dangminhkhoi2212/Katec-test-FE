@@ -47,7 +47,7 @@ const TaskList: React.FC<Props> = ({ id }) => {
 		if (tasks?.data?.length) {
 			console.log(tasks.data);
 			setGanttTasks(convertGanttTasks(tasks.data));
-		}
+		} else setGanttTasks([]);
 	}, [tasks]);
 	return (
 		<div className="bg-sky-50 p-4 rounded-lg flex flex-col gap-6 overflow-hidden min-h-96 w-full    ">

@@ -24,7 +24,7 @@ const AddTaskButton: React.FC<Props> = ({ id }) => {
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogTrigger>
 					<div className="flex items-center gap-2 py-2 px-4 rounded-md bg-primary text-white">
-						Thêm dự án <Plus size={16} />
+						Thêm công việc <Plus size={16} />
 					</div>
 				</DialogTrigger>
 				<DialogContent>

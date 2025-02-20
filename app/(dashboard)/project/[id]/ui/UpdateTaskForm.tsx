@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { Trash } from "lucide-react";
 import { useParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { Control, useForm } from "react-hook-form";
@@ -91,6 +92,28 @@ const UpdateTaskForm: React.FC<Props> = ({ setTask, task }) => {
 		},
 	});
 
+	const deleteTaskMutation = useMutation({
+		mutationFn: async () => {
+			return await taskService.update(task._id, { isDeleted: true });
+		},
+		onSuccess() {
+			queryClient.invalidateQueries({
+				queryKey: ["tasks", { project: id }],
+				refetchType: "all",
+			});
+			reset(defaultValue);
+			toast({ description: "Đã xóa công việc." });
+			if (setTask) setTask(null);
+		},
+		onError(error) {
+			toast({
+				variant: "destructive",
+				description: "Đã có lỗi xảy ra",
+			});
+			console.log("🚀 ~ mutationFn:async ~ error:", error);
+		},
+	});
+
 	const onSubmit = (data: TForm) => {
 		updateTaskMutation.mutate(data);
 	};
@@ -161,7 +184,17 @@ const UpdateTaskForm: React.FC<Props> = ({ setTask, task }) => {
 					label="Mô tả"
 					error={errors.description?.message}
 				/>
-				<div className="flex justify-end ">
+				<div className="flex gap-4 justify-end ">
+					<Button
+						type="button"
+						variant={"destructive"}
+						className="text-white"
+						loading={updateTaskMutation.isPending}
+						onClick={() => deleteTaskMutation.mutate()}
+					>
+						<Trash />
+						Xóa
+					</Button>
 					<Button
 						type="submit"
 						className="text-white"
