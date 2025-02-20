@@ -10,13 +10,15 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 
-import AddProjectForm from "./AddProjectForm";
-import { projectStore } from "./store";
+import AddTaskForm from "./AddTaskForm";
+import { projectDetailStore } from "./projectDetailStore";
 
-type Props = Record<string, unknown>;
+type Props = {
+	id: string;
+};
 
-const AddProjectButton: React.FC<Props> = () => {
-	const { open, setOpen } = projectStore((state) => state);
+const AddTaskButton: React.FC<Props> = ({ id }) => {
+	const { open, setOpen } = projectDetailStore((state) => state);
 	return (
 		<div>
 			<Dialog open={open} onOpenChange={setOpen}>
@@ -30,11 +32,11 @@ const AddProjectButton: React.FC<Props> = () => {
 						<DialogTitle>Thêm dự án mới</DialogTitle>
 						<DialogDescription></DialogDescription>
 					</DialogHeader>
-					<AddProjectForm />
+					<AddTaskForm id={id} />
 				</DialogContent>
 			</Dialog>
 		</div>
 	);
 };
 
-export default AddProjectButton;
+export default AddTaskButton;

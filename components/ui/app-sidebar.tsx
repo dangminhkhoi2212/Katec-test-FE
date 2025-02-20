@@ -1,39 +1,40 @@
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+import { Calendar, Home, Inbox, Search } from "lucide-react";
 
 import {
-    Sidebar, SidebarFooter, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarMenuButton,
-    SidebarMenuItem
-} from '@/components/ui/sidebar';
+	Sidebar,
+	SidebarFooter,
+	SidebarGroupContent,
+	SidebarHeader,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+} from "@/components/ui/sidebar";
+import { routes } from "@/routes";
 
-import AccountButton from '../shared/AccountButton';
-import Logo from '../shared/Logo';
+import AccountButton from "../shared/AccountButton";
+import Logo from "../shared/Logo";
 
 // Menu items.
 const items = [
 	{
-		title: "Home",
-		url: "#",
+		title: "Trang chủ",
+		url: routes.home,
 		icon: Home,
 	},
 	{
-		title: "Inbox",
+		title: "Công việc hôm nay",
 		url: "#",
 		icon: Inbox,
 	},
 	{
-		title: "Calendar",
+		title: "Khách hàng",
 		url: "#",
 		icon: Calendar,
 	},
 	{
-		title: "Search",
+		title: "Nhân viên",
 		url: "#",
 		icon: Search,
-	},
-	{
-		title: "Settings",
-		url: "#",
-		icon: Settings,
 	},
 ];
 

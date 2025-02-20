@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
+import { Toaster } from "@/components/ui/toaster";
 import { QueryClientProvider } from "@/providers";
 // fr-FR locale is imported as frFR
 import { viVN } from "@clerk/localizations";
@@ -34,6 +35,7 @@ export default function RootLayout({
 				<body
 					className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 				>
+					<Toaster />
 					<QueryClientProvider>{children}</QueryClientProvider>
 				</body>
 			</html>
