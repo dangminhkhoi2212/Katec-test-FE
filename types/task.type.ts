@@ -16,6 +16,9 @@ export type TTask = {
 export type TTaskCrate = Omit<TTask, "_id" | keyof Audit>;
 export type TTaskUpdate = Partial<TTaskCrate>;
 export type TTaskQuery = {
+	assginedDate?: string;
+	dueDate?: string;
+	date?: string;
 	project?: string;
 	status?: Status;
 	priority?: Priority;

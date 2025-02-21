@@ -23,7 +23,7 @@ const items = [
 	},
 	{
 		title: "Công việc hôm nay",
-		url: "#",
+		url: routes.works,
 		icon: Inbox,
 	},
 	{

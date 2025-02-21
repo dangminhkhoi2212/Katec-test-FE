@@ -1,6 +1,7 @@
 type TRoutes = {
 	signIn: string;
 	home: string;
+	works: string;
 	project: (id: string) => string;
 };
 
@@ -12,4 +13,5 @@ export const routes: TRoutes = {
 
 		return `/project/${id}`;
 	},
+	works: "/works",
 };

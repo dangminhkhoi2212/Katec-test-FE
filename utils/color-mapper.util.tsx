@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 import { Priority, Status } from "@/types";
 
 export const priorityColor = {
@@ -11,6 +12,22 @@ export const statusColor = {
 	[Status.IN_PROGRESS]: "bg-yellow-300",
 	[Status.DONE]: "bg-green-200",
 	[Status.LATE]: "bg-red-300",
+};
+const BadgeColor = (className: string, title: string) => {
+	return (
+		<Badge variant="default" className={cn("", className)}>
+			{title}
+		</Badge>
+	);
+};
+export const statusBage = {
+	[Status.NEW]: BadgeColor(statusColor[Status.NEW], "Mới"),
+	[Status.IN_PROGRESS]: BadgeColor(
+		statusColor[Status.IN_PROGRESS],
+		"Đang xử lý"
+	),
+	[Status.DONE]: BadgeColor(statusColor[Status.DONE], "Hoàn thành"),
+	[Status.LATE]: BadgeColor(statusColor[Status.LATE], "Trễ"),
 };
 export const priorityBage = {
 	[Priority.LOW]: (
